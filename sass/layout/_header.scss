@@ -1,0 +1,44 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom , 
+        rgba($color-primary-light, .7) , 
+        rgba($color-primary-dark, .7)) , 
+        url('../img/hero.jpg');
+    background-size: cover; /* cover always try to fit in block */
+    background-position: top; 
+
+    /* header is a parent element of logo-box so it needs to set position relative 
+    because in logo-box there is top :40px left: 40px to header */
+    position: relative;
+
+    /* This is advance css property which clip image and it goes in clockwise direction 
+    clip-path: polygon(x y, x y, x y) */
+    clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0% 100%);
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem; /* both top and left are measured from parent element which is header */
+        left: 4rem;
+    }
+    
+    &__logo {
+        height: 4.5rem;
+        animation: logoAnimation 2s ease-in;
+    }
+    
+    &__logo:hover {
+        transform: rotate(180deg);
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%; /* because text-box position is absolute so this top and left are relative to parent element */
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        /* b/c the button is inline-block so it is treated like a text so we can center button
+        by simple text-align */
+        text-align: center;
+    }
+}

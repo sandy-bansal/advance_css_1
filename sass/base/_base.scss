@@ -1,0 +1,23 @@
+//This is base file where all basics definitions
+
+/* universal selector for clean code b/c browser have some default value for element*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /* by default box-sizing is not inheritable property so here we make it */
+}
+
+html {
+    /* this is the root font size which is default of 16px 
+    but for shake of simplicity we use 10px so that we can calcutae rem unit easily */
+    /* b/c 1 rem is equal to the root font size now 1 rem = 10px */
+    /* font-size: 10px; */
+    /* font size in px is bad practice so we need to change it in % now we need 10px so divide 10/16 = .625 */
+    font-size: 62.5%; 
+}
+
+body {
+    box-sizing: border-box;
+}

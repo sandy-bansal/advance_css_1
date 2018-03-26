@@ -1,0 +1,138 @@
+/* universal selector for clean code b/c browser have some default value for element*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* by default box-sizing is not inheritable property so here we make it */ }
+
+html {
+  /* this is the root font size which is default of 16px 
+    but for shake of simplicity we use 10px so that we can calcutae rem unit easily */
+  /* b/c 1 rem is equal to the root font size now 1 rem = 10px */
+  /* font-size: 10px; */
+  /* font size in px is bad practice so we need to change it in % now we need 10px so divide 10/16 = .625 */
+  font-size: 62.5%; }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.7), rgba(40, 180, 133, 0.7)), url("../img/hero.jpg");
+  background-size: cover;
+  /* cover always try to fit in block */
+  background-position: top;
+  /* header is a parent element of logo-box so it needs to set position relative 
+    because in logo-box there is top :40px left: 40px to header */
+  position: relative;
+  /* This is advance css property which clip image and it goes in clockwise direction 
+    clip-path: polygon(x y, x y, x y) */
+  clip-path: polygon(0 0, 100% 0%, 100% 75vh, 0% 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    /* both top and left are measured from parent element which is header */
+    left: 4rem; }
+  .header__logo {
+    height: 4.5rem;
+    animation: logoAnimation 2s ease-in; }
+  .header__logo:hover {
+    transform: rotate(180deg); }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* because text-box position is absolute so this top and left are relative to parent element */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* b/c the button is inline-block so it is treated like a text so we can center button
+        by simple text-align */
+    text-align: center; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* to prevent shakyness while animation use backface-visibility property */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* for animation to work we need to define two properties */
+    /* we can also use shortcut also instead of defining to two properties
+        by using animation property */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 2;
+        */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 2s ease-out; }
+
+/* keyframe is a method in css for making animation here 0 is the animation at initial
+and 100 is animation on complete we can add any percentage b/w it like 80% */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(4rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-4rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes logoAnimation {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg); }
+  100% {
+    opacity: 1; } }
+
+.btn {
+  /* :link and :visited is pseudo-class, pseudo-class are a special state of a selector */ }
+  .btn:link, .btn:visited {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /* this mean 15 from top and bottom and 40 from left and right */
+    display: inline-block;
+    /* by giving this button will not overlap with sub heading */
+    border-radius: 10rem;
+    transition: all .2s;
+    /* this will apply all animation */ }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    /* this means 0 in x dir and 10 in y 20px is blurryness */ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }

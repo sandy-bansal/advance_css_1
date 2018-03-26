@@ -1,0 +1,29 @@
+.btn {
+    /* :link and :visited is pseudo-class, pseudo-class are a special state of a selector */
+    &:link,
+    &:visited {
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        text-decoration: none; 
+        padding: 1.5rem 4rem; /* this mean 15 from top and bottom and 40 from left and right */ 
+        display: inline-block; /* by giving this button will not overlap with sub heading */
+        border-radius: 10rem;
+        transition: all .2s; /* this will apply all animation */
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, .5); /* this means 0 in x dir and 10 in y 20px is blurryness */
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+
+    &--white {
+        background-color: $color-white;  
+        color: $color-gry-dark;
+    }
+}
+

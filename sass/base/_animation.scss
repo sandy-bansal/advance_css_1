@@ -1,0 +1,44 @@
+/* keyframe is a method in css for making animation here 0 is the animation at initial
+and 100 is animation on complete we can add any percentage b/w it like 80% */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);        
+    }
+
+    80% {
+        transform: translateX(4rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+         transform: translateX(10rem);        
+    }
+
+    80% {
+         transform: translateX(-4rem);
+    }
+
+    100% {
+        opacity: 1;
+         transform: translate(0);
+    }
+}
+
+@keyframes logoAnimation {
+    0% {
+        opacity: 1;
+        transform: rotate(180deg)
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

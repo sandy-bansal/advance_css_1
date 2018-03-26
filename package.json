@@ -1,0 +1,14 @@
+{
+  "name": "nataraj_template",
+  "version": "1.0.0",
+  "description": "nataraj front end template",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "sandeep bansal",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.8.3"
+  }
+}
