@@ -1,0 +1,53 @@
+// 1140px is a standard these days for making grid.
+.row {
+    max-width: $grid-width;
+    background-color: #eee;
+    margin: 0 auto; //this is used to center a block element inside a block element.
+    
+    // this will select everything except last child of row means last row.
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    // this is used when we use float property margin got disable at that point of time we need.. 
+    // to use clearfix which is define in mixin so that we can use it multiple times.
+    @include clearfix; 
+
+    // because every column is same css so we don't repeat ourself that's why we will use attribute selector.
+    // we can also mention simple col class in every column but still it is not prefered way of doing this thing.
+    // here ^ this means it select every class which start from "col-".
+    // attribute selector
+    [class^="col-"] {
+        background-color: orangered;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+        
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+
+    .col-2-of-3 {
+        width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+    }
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+
+    .col-2-of-4 {
+        width: calc( 2 * ((100% - 3 * #{$gutter-horizontal}) / 4) +  #{$gutter-horizontal});
+    }
+
+    .col-3-of-4 {
+        width: calc( 3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + (2 * #{$gutter-horizontal}));
+    }
+}

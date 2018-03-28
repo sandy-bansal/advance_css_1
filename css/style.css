@@ -1,3 +1,32 @@
+/* keyframe is a method in css for making animation here 0 is the animation at initial
+and 100 is animation on complete we can add any percentage b/w it like 80% */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(4rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-4rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes logoAnimation {
+  0% {
+    opacity: 1;
+    transform: rotate(180deg); }
+  100% {
+    opacity: 1; } }
+
 /* universal selector for clean code b/c browser have some default value for element*/
 *,
 *::after,
@@ -16,13 +45,95 @@ html {
   font-size: 62.5%; }
 
 body {
+  box-sizing: border-box; }
+
+body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  padding: 3rem;
-  box-sizing: border-box; }
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* to prevent shakyness while animation use backface-visibility property */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    /* for animation to work we need to define two properties */
+    /* we can also use shortcut also instead of defining to two properties
+        by using animation property */
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 2;
+        */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 2s ease-out; }
+
+.btn {
+  /* :link and :visited is pseudo-class, pseudo-class are a special state of a selector */ }
+  .btn:link, .btn:visited {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    /* this mean 15 from top and bottom and 40 from left and right */
+    display: inline-block;
+    /* by giving this button will not overlap with sub heading */
+    border-radius: 10rem;
+    transition: all .2s;
+    /* this will apply all animation */ }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+    /* this means 0 in x dir and 10 in y 20px is blurryness */ }
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) +  6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + (2 * 6rem)); }
 
 .header {
   height: 95vh;
@@ -55,84 +166,3 @@ body {
     /* b/c the button is inline-block so it is treated like a text so we can center button
         by simple text-align */
     text-align: center; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* to prevent shakyness while animation use backface-visibility property */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    /* for animation to work we need to define two properties */
-    /* we can also use shortcut also instead of defining to two properties
-        by using animation property */
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-    animation-timing-function: ease-in;
-    /*
-        animation-delay: 3s;
-        animation-iteration-count: 2;
-        */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight 2s ease-out; }
-
-/* keyframe is a method in css for making animation here 0 is the animation at initial
-and 100 is animation on complete we can add any percentage b/w it like 80% */
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem); }
-  80% {
-    transform: translateX(4rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem); }
-  80% {
-    transform: translateX(-4rem); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes logoAnimation {
-  0% {
-    opacity: 1;
-    transform: rotate(180deg); }
-  100% {
-    opacity: 1; } }
-
-.btn {
-  /* :link and :visited is pseudo-class, pseudo-class are a special state of a selector */ }
-  .btn:link, .btn:visited {
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    /* this mean 15 from top and bottom and 40 from left and right */
-    display: inline-block;
-    /* by giving this button will not overlap with sub heading */
-    border-radius: 10rem;
-    transition: all .2s;
-    /* this will apply all animation */ }
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
-    /* this means 0 in x dir and 10 in y 20px is blurryness */ }
-  .btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
-  .btn--white {
-    background-color: #fff;
-    color: #777; }
