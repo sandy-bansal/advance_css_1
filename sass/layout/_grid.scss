@@ -1,7 +1,6 @@
 // 1140px is a standard these days for making grid.
 .row {
     max-width: $grid-width;
-    background-color: #eee;
     margin: 0 auto; //this is used to center a block element inside a block element.
     
     // this will select everything except last child of row means last row.
@@ -18,7 +17,6 @@
     // here ^ this means it select every class which start from "col-".
     // attribute selector
     [class^="col-"] {
-        background-color: orangered;
         float: left;
 
         &:not(:last-child) {
